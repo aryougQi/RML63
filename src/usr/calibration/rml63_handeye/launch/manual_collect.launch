@@ -1,0 +1,14 @@
+<launch>
+  <arg name="namespace_prefix" default="rml63_l515_manual"/>
+  <arg name="tag_size" default="0.151"/>
+  <arg name="show_debug" default="true"/>
+  <include file="$(find rml63_handeye)/launch/calibrate.launch">
+    <arg name="namespace_prefix" value="$(arg namespace_prefix)"/>
+    <arg name="tag_size" value="$(arg tag_size)"/>
+    <arg name="show_debug" value="$(arg show_debug)"/>
+    <arg name="freehand_robot_movement" value="true"/>
+  </include>
+  <node pkg="rml63_handeye" type="backup_samples.py" name="rml63_manual_sample_backup" output="screen">
+    <param name="calibration_namespace" value="/$(arg namespace_prefix)_eye_on_hand"/>
+  </node>
+</launch>

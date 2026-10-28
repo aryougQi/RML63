@@ -1,0 +1,29 @@
+<launch>
+  <arg name="execute" default="false"/>
+  <!-- 0 = geometric Tag center; positive = gap on the camera-facing side. -->
+  <arg name="clearance_m" default="0.050"/>
+  <arg name="retract" default="false"/>
+  <!-- Empty keeps the velocity setting from config/touch.yaml. -->
+  <arg name="velocity_scaling" default=""/>
+  <arg name="max_target_distance_m" default=""/>
+  <arg name="use_joint_offsets" default="true"/>
+  <arg name="calibration_file" default="$(find rml63_handeye)/config/active_joint_calibration.yaml"/>
+  <arg name="tcp_x" default="0.0"/>
+  <arg name="tcp_y" default="0.0"/>
+  <arg name="tcp_z" default="0.150"/>
+  <arg name="align_tcp_z" default="true"/>
+  <arg name="keep_alive" default="true"/>
+  <node pkg="rml63_tag_touch" type="touch_tag.py" name="rml63_touch_tag" output="screen">
+    <rosparam command="load" file="$(find rml63_tag_touch)/config/touch.yaml"/>
+    <param name="execute" value="$(arg execute)"/>
+    <param name="clearance_m" value="$(arg clearance_m)"/>
+    <param name="retract" value="$(arg retract)"/>
+    <param if="$(eval arg('velocity_scaling') != '')" name="velocity_scaling" value="$(arg velocity_scaling)" type="double"/>
+    <param if="$(eval arg('max_target_distance_m') != '')" name="max_target_distance_m" value="$(arg max_target_distance_m)" type="double"/>
+    <param name="calibration_file" value="$(arg calibration_file)"/>
+    <param name="use_joint_offsets" value="$(arg use_joint_offsets)"/>
+    <rosparam param="tcp_xyz" subst_value="true">[$(arg tcp_x), $(arg tcp_y), $(arg tcp_z)]</rosparam>
+    <param name="align_tcp_z" value="$(arg align_tcp_z)"/>
+    <param name="keep_alive" value="$(arg keep_alive)"/>
+  </node>
+</launch>

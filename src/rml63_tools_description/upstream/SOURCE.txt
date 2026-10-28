@@ -1,0 +1,3 @@
+Source: https://github.com/RealManRobot/rm_models
+Revision: 0785b56b12a6259f0f4e5f258b5367c4d950d85e
+Original subdirectory: thirdparty/Two-finger Electric Gripper.urdf

@@ -1,0 +1,30 @@
+{
+  "normal_neighbors": 24,
+  "normal_radius_m": 0.010,
+  "min_normal_neighbors": 10,
+  "neighbor_outlier_k": 6,
+  "max_neighbor_distance_m": 0.007,
+  "candidate_fractions": [-0.25, -0.125, 0.0, 0.125, 0.25],
+  "patch_half_length_m": 0.012,
+  "min_patch_points": 45,
+  "min_edge_points": 8,
+  "min_center_points": 12,
+  "min_edge_center_points": 3,
+  "min_end_margin_m": 0.025,
+  "max_curvature": 0.07,
+  "max_normal_deviation_deg": 20,
+  "max_patch_rmse_m": 0.0018,
+  "patch_inlier_distance_m": 0.003,
+  "min_patch_inlier_ratio": 0.85,
+  "width_tolerance_m": 0.006,
+  "opening_clearance_per_side_m": 0.002,
+  "gripper_max_opening_m": null,
+  "score_weights": {
+    "centrality": 0.35,
+    "flatness": 0.20,
+    "normal_consistency": 0.15,
+    "width_match": 0.15,
+    "edge_balance": 0.10,
+    "residual": 0.05
+  }
+}

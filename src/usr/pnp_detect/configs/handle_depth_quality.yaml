@@ -1,0 +1,6 @@
+# One shared policy for every annotated frame/session; not detection thresholds.
+min_depth_m: 0.10
+max_depth_m: 10.0
+reference_tolerance_m: 0.010
+min_temporal_observations: 3
+# No absolute depth truth is inferred from an RGB ROI or from the basket bottom.

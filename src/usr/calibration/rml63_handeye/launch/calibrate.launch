@@ -1,0 +1,40 @@
+<launch>
+  <arg name="tag_size" default="0.151"/>
+  <arg name="tag_id" default="0"/>
+  <arg name="tag_frame" default="rml63_apriltag_0"/>
+  <arg name="namespace_prefix" default="rml63_l515"/>
+  <arg name="freehand_robot_movement" default="false"/>
+  <arg name="start_sampling_gui" default="true"/>
+  <arg name="show_debug" default="true"/>
+  <arg name="sync_camera_time" default="true"/>
+  <arg name="translation_delta_meters" default="0.02"/>
+  <arg name="rotation_delta_degrees" default="10"/>
+  <arg name="robot_velocity_scaling" default="0.05"/>
+  <arg name="robot_acceleration_scaling" default="0.05"/>
+  <!-- Start camera and realrobot.launch separately; do not duplicate existing nodes. -->
+  <include file="$(find rml63_handeye)/launch/detect.launch">
+    <arg name="tag_size" value="$(arg tag_size)"/>
+    <arg name="tag_id" value="$(arg tag_id)"/>
+    <arg name="tag_frame" value="$(arg tag_frame)"/>
+    <arg name="show_debug" value="$(arg show_debug)"/>
+    <arg name="sync_camera_time" value="$(arg sync_camera_time)"/>
+  </include>
+  <include file="$(find easy_handeye)/launch/calibrate.launch">
+    <arg name="eye_on_hand" value="true"/>
+    <arg name="namespace_prefix" value="$(arg namespace_prefix)"/>
+    <arg name="freehand_robot_movement" value="$(arg freehand_robot_movement)"/>
+    <arg name="move_group_namespace" value="/"/>
+    <arg name="move_group" value="arm"/>
+    <arg name="robot_base_frame" value="base_link"/>
+    <arg name="robot_effector_frame" value="link6"/>
+    <arg name="tracking_base_frame" value="camera_color_optical_frame"/>
+    <arg name="tracking_marker_frame" value="$(arg tag_frame)"/>
+    <arg name="publish_dummy" value="false"/>
+    <arg name="start_rviz" value="false"/>
+    <arg name="start_sampling_gui" value="$(arg start_sampling_gui)"/>
+    <arg name="translation_delta_meters" value="$(arg translation_delta_meters)"/>
+    <arg name="rotation_delta_degrees" value="$(arg rotation_delta_degrees)"/>
+    <arg name="robot_velocity_scaling" value="$(arg robot_velocity_scaling)"/>
+    <arg name="robot_acceleration_scaling" value="$(arg robot_acceleration_scaling)"/>
+  </include>
+</launch>

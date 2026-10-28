@@ -1,0 +1,77 @@
+{
+  "roi_xywh": [
+    78,
+    39,
+    163,
+    98
+  ],
+  "roi_confirms_handle_identity": true,
+  "dimensions_verified": true,
+  "length_m": 0.2,
+  "width_m": 0.016,
+  "thickness_m": 0.007,
+  "shape": "curved_rectangular_top_face",
+  "length_tolerance_m": 0.03,
+  "width_tolerance_m": 0.006,
+  "depth_range_m": [
+    0.4,
+    0.54
+  ],
+  "depth_band_m": 0.025,
+  "min_points": 100,
+  "max_plane_rmse_m": 0.0025,
+  "min_plane_inlier_ratio": 0.85,
+  "plane_inlier_m": 0.004,
+  "min_rect_fill": 0.65,
+  "max_axis_approach_dot": 0.35,
+  "approach_camera": null,
+  "approach_verified": false,
+  "basket_relation": null,
+  "max_position_std_m": 0.003,
+  "max_direction_deviation_deg": 3.0,
+  "min_success_rate": 0.95,
+  "dimension_source": "user reported approximate dimensions: 200 x 16 x 7 mm, slightly bowed wood strip",
+  "dimension_uncertainty_m": null,
+  "max_bow_sag_m": 0.018,
+  "min_raw_surface_support": 0.7,
+  "include_full_roi_component": true,
+  "dimension_precision": "approximate user dimensions; no independently verified uncertainty bounds",
+  "tilt_about_handle_deg": 0,
+  "max_tilt_deg": 25,
+  "max_face_approach_angle_deg": 25,
+  "support_plane": {
+    "enabled": true,
+    "horizontal_confirmed": true,
+    "roi_xywh": [
+      237,
+      100,
+      60,
+      40
+    ],
+    "depth_range_m": [
+      0.567,
+      0.6970000000000001
+    ],
+    "min_points": 1000,
+    "min_inlier_ratio": 0.95,
+    "inlier_m": 0.003,
+    "max_rmse_m": 0.0015
+  },
+  "approach_policy": "vertical_first",
+  "tilt_candidates_deg": [
+    5,
+    -5,
+    10,
+    -10,
+    15,
+    -15,
+    20,
+    -20,
+    25,
+    -25
+  ],
+  "segmentation_max_local_depth_range_m": 0.025,
+  "recover_target_foreground_component": true,
+  "bow_limit_source": "90 distinct native frames from runs 20261026_202405, 20261026_202529, 20261026_202131: fitted sag 12.697..16.130 mm; residual <=0.982 mm; 18 mm model bound includes measurement variation, not a ground-truth bend measurement",
+  "length_tolerance_source": "2026-10-27 operator reconfirmed nominal length approximately 0.20 m; recognition tolerance 0.030 m accommodates observed fitted visible span 0.1723..0.1766 m. This is a recognition gate, not a verified physical uncertainty or full-end visibility claim. Candidates remain inside the observed fitted centreline with CAD/end margins."
+}

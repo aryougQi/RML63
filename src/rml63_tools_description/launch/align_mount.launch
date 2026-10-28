@@ -1,0 +1,13 @@
+<launch>
+  <arg name="RM63_type" default="RM63II"/>
+  <arg name="link6_type" default="Link6"/>
+  <arg name="use_rviz" default="true"/>
+  <arg name="rviz_config" default="$(find rml63_tools_description)/config/gripper_closeup.rviz"/>
+  <arg name="output" default="$(find rml63_tools_description)/config/mount_alignment_result.yaml"/>
+  <param name="robot_description" command="$(find xacro)/xacro '$(find rml63_tools_description)/urdf/rml63_with_gripper.urdf.xacro' RM63_type:=$(arg RM63_type) link6_type:=$(arg link6_type) alignment_preview:=true"/>
+  <node name="mount_alignment_gui" pkg="rml63_tools_description" type="align_mount_gui.py" output="screen">
+    <param name="output" value="$(arg output)"/>
+  </node>
+  <node name="alignment_robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node if="$(arg use_rviz)" name="alignment_rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)"/>
+</launch>

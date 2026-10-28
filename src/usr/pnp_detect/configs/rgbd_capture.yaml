@@ -1,0 +1,9 @@
+# Fixed CPU capture policy. Actual profiles/intrinsics always come from the SDK.
+depth_resolution_wh: [320, 240]
+color_resolution_wh: [640, 480]
+fps: 30
+warmup_frames: 30
+max_pair_skew_ms: 20.0
+capture_timeout_seconds: 30.0
+frame_timeout_ms: 5000
+# SDK align only. No temporal/spatial smoothing or hole filling.

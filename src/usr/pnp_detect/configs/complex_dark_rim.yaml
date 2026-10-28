@@ -1,0 +1,53 @@
+# 黑色外缘通用候选配置；不限制目标位置，需核对实际外观是否符合明暗先验。
+preprocessing:
+  blur_kernel: 5
+  canny_low: 50
+  canny_high: 150
+  close_kernel: 3
+  hsv_lower: null
+  hsv_upper: null
+  roi: null
+detection:
+  min_area_ratio: 0.015
+  max_area_ratio: 0.85
+  min_side_px: 25
+  min_angle_deg: 25
+  max_angle_deg: 155
+  border_margin_px: 3
+  approx_epsilon_ratios:
+  - 0.01
+  - 0.02
+  - 0.035
+  edge_distance_px: 3.0
+  min_edge_support: 0.8
+  min_side_support: 0.65
+  max_unsupported_run_ratio: 0.24
+  min_contour_coverage: 0.75
+  min_line_support: 0.32
+  hough_threshold: 22
+  hough_min_line_length: 30
+  hough_max_line_gap: 12
+  line_angle_tolerance_deg: 12
+  line_distance_px: 4
+  refine_distance_px: 4
+  max_refine_shift_px: 8
+  duplicate_distance_px: 5
+  ambiguity_score_margin: 0.035
+  max_candidates: 1000
+  max_endpoint_gap_px: 20
+  max_near_parallel_pair_angle_deg: 90
+  max_unsupported_gap_px: 30
+  line_proposals:
+    enabled: true
+    max_lines: 32
+    max_opposite_angle_deg: 28
+    merge_distance_px: 3
+  rim_polarity:
+    enabled: true
+    sample_offset_px: 2
+    normal_search_px: 3
+    min_side_contrast: 20
+input_geometry:
+  status: unknown
+  source_resolution_wh: null
+  source_to_input_3x3: null

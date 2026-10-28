@@ -1,0 +1,9 @@
+# Virtual preview initial positions, radians. Not hardware zero calibration.
+zeros:
+  joint1: 0  # 0.000 deg
+  joint2: 0.872664625997165  # 50.000 deg
+  joint3: -2.4434085929145  # -139.997 deg
+  joint4: -1.74532925199433e-05  # -0.001 deg
+  joint5: -1.57076142020986  # -89.998 deg
+  joint6: -0.535344841464221  # -30.673 deg
+  4C2_Joint1: 0.0  # closed gripper

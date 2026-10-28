@@ -1,0 +1,3 @@
+-r requirements.txt
+# L515 legacy SDK branch, tested separately from current D400 releases.
+pyrealsense2==2.50.0.3812

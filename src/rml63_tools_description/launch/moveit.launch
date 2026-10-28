@@ -1,0 +1,28 @@
+<launch>
+  <arg name="RM63_type" default="RM63II"/>
+  <arg name="link6_type" default="Link6"/>
+  <arg name="plate_xyz" default="0 0 0"/>
+  <arg name="plate_rpy" default="0 0 0"/>
+  <arg name="mount_xyz" default="0 0 0.006909"/>
+  <arg name="mount_rpy" default="0 0 -1.0471975511965976"/>
+  <arg name="gripper_angle" default="0"/>
+  <arg name="allow_execution" default="false"/>
+  <arg name="use_rviz" default="true"/>
+  <!-- Real /joint_states must come from rm_driver, launched separately. -->
+  <!-- Calibration keeps a fixed aperture: the stock rm_driver publishes only six arm joints. -->
+  <param name="robot_description" command="$(find xacro)/xacro '$(find rml63_tools_description)/urdf/rml63_with_gripper.urdf.xacro' RM63_type:=$(arg RM63_type) link6_type:=$(arg link6_type) 'plate_xyz:=$(arg plate_xyz)' 'plate_rpy:=$(arg plate_rpy)' 'mount_xyz:=$(arg mount_xyz)' 'mount_rpy:=$(arg mount_rpy)' fixed_gripper:=true gripper_angle:=$(arg gripper_angle)"/>
+  <include file="$(find rml_63_moveit_config)/launch/move_group.launch">
+    <arg name="load_robot_description" value="false"/>
+    <arg name="allow_trajectory_execution" value="$(arg allow_execution)"/>
+    <arg name="fake_execution" value="false"/>
+  </include>
+  <!-- Override the stock SRDF after the include with gripper internal contacts excluded. -->
+  <param name="robot_description_semantic" textfile="$(find rml63_tools_description)/config/rml63_with_gripper.srdf"/>
+  <!-- MoveIt initializes its controller manager even in planning-only mode. -->
+  <param unless="$(arg allow_execution)" name="/move_group/moveit_controller_manager" value="moveit_simple_controller_manager/MoveItSimpleControllerManager"/>
+  <rosparam unless="$(arg allow_execution)" param="/move_group/controller_list">[]</rosparam>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <include if="$(arg use_rviz)" file="$(find rml_63_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="$(find rml_63_moveit_config)/launch/moveit.rviz"/>
+  </include>
+</launch>

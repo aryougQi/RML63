@@ -1,0 +1,26 @@
+# Metres and radians. TCP: closed original fingers' center, link6 +Z 150 mm.
+tcp_xyz: [0.0, 0.0, 0.150]
+tcp_rpy: [0.0, 0.0, 0.0]
+planning_group: arm
+base_frame: base_link
+tool_frame: link6
+camera_frame: camera_color_optical_frame
+tag_frame: rml63_apriltag_0
+# First approach 10 cm from the plane, then stop 5 cm above the Tag center.
+approach_distance_m: 0.100
+velocity_scaling: 0.02
+acceleration_scaling: 0.02
+align_tcp_z: true
+eef_step_m: 0.002
+max_target_distance_m: 0.40
+max_joint_travel_deg: 90.0
+max_cartesian_joint_step_deg: 10.0
+tf_max_age_sec: 0.5
+capture_timeout_sec: 15.0
+capture_samples: 15
+capture_duration_sec: 0.6
+max_tag_spread_m: 0.004
+max_tag_rotation_deg: 2.0
+position_tolerance_m: 0.003
+orientation_tolerance_deg: 1.0
+preview_duration_sec: 3.0

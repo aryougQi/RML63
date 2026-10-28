@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>depth_handle_grasp</name><version>0.1.0</version>
+  <description>Fresh depth handle pose publishing, calibrated grasp planning and explicit real execution.</description>
+  <maintainer email="local@example.invalid">Local robot operator</maintainer><license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>rospy</exec_depend><exec_depend>moveit_commander</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend><exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>moveit_msgs</exec_depend><exec_depend>shape_msgs</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend><exec_depend>tf</exec_depend><exec_depend>tf2_ros</exec_depend>
+  <exec_depend>actionlib</exec_depend><exec_depend>control_msgs</exec_depend><exec_depend>trajectory_msgs</exec_depend>
+  <exec_depend>dynamic_reconfigure</exec_depend><exec_depend>std_msgs</exec_depend><exec_depend>realsense2_camera</exec_depend>
+  <exec_depend>rm_msgs</exec_depend><exec_depend>rml63_tools_description</exec_depend>
+  <exec_depend>moveit_task_constructor_core</exec_depend>
+  <exec_depend>moveit_task_constructor_msgs</exec_depend>
+  <exec_depend>python3-numpy</exec_depend><exec_depend>python3-scipy</exec_depend>
+  <exec_depend>python3-yaml</exec_depend><exec_depend>xacro</exec_depend>
+</package>

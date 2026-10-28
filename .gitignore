@@ -1,0 +1,34 @@
+# Build and runtime outputs
+build/
+devel/
+install/
+log/
+logs/
+outputs/
+reports/
+data/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.bag
+*.npy
+*.npz
+*.log
+# Local credentials and device-generated calibration
+.env
+.env.*
+*.pem
+*.key
+.aws/
+.codex/
+.agents/
+.workbuddy/
+.Trash-*/
+active_joint_calibration.yaml
+mount_alignment_result.yaml
+# Simulation
+src/rml63_sim/
+src/rm_robot/rm_gazebo/
+docker/
+docker-compose.yml

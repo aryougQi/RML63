@@ -1,0 +1,28 @@
+{
+  "roi_xywh": null,
+  "roi_confirms_handle_identity": false,
+  "dimensions_verified": false,
+  "length_m": 0.24,
+  "width_m": 0.024,
+  "thickness_m": 0.018,
+  "shape": "rectangular_top_face",
+  "length_tolerance_m": 0.025,
+  "width_tolerance_m": 0.008,
+  "depth_range_m": [
+    0.25,
+    3.0
+  ],
+  "depth_band_m": 0.025,
+  "min_points": 100,
+  "max_plane_rmse_m": 0.0025,
+  "min_plane_inlier_ratio": 0.85,
+  "plane_inlier_m": 0.004,
+  "min_rect_fill": 0.7,
+  "max_axis_approach_dot": 0.35,
+  "approach_camera": null,
+  "approach_verified": false,
+  "basket_relation": null,
+  "max_position_std_m": 0.003,
+  "max_direction_deviation_deg": 3.0,
+  "min_success_rate": 0.95
+}

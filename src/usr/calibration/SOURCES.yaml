@@ -1,0 +1,9 @@
+easy_handeye:
+  remote: https://github.com/IFL-CAMP/easy_handeye.git
+  revision: 5aa453b91e26bc7f0fc9d7461501824f967f1e29
+apriltag:
+  remote: https://github.com/AprilRobotics/apriltag.git
+  revision: b7c0ebe9aa20f82ec7a828579004f9e706bfecd9
+apriltag_ros:
+  remote: https://github.com/AprilRobotics/apriltag_ros.git
+  revision: 94b3b843324f6b64edc6ca59f9729e9021308406

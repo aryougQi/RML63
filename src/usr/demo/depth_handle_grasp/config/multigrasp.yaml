@@ -1,0 +1,41 @@
+# Metres, radians except explicitly named degrees. Approximate section inference
+# is allowed for ranking only; it does not verify hidden side contacts.
+end_margin_m: 0.015
+sample_spacing_m: 0.015
+max_candidates: 24
+min_contact_margin_m: 0.002
+orientation_signs: [1, -1]
+approach_angles_deg: [0, -5, 5]
+max_face_angle_deg: 15
+max_downward_angle_deg: 20
+max_closure_axis_dot: 0.1
+max_rmse_m: 0.0025
+min_inlier_ratio: 0.85
+open_width_m: 0.045
+scene_margin_m: 0.004
+clearance_scale_m: 0.025
+friction_coefficient: 0.4
+allow_section_inference: true
+section_model_confidence: 0.35
+score_weights: {anti: 0.35, clearance: 0.25, geometry: 0.25, robust: 0.15}
+robust_trials: 16
+robust_seed: 63
+robust_position_m: 0.002
+robust_angle_deg: 2.0
+planning_top_k: 5
+planning_timeout_sec: 8.0
+cost_weights: {length: 1.0, duration: 0.1, clearance: 1.0, joint_motion: 0.2}
+# Must be supplied from verified measurements. Never infer a place target.
+# basket_pose_base/place_pose_base are 4x4 basket-frame transforms.
+# basket_boxes: [{size_m: [x,y,z], pose_basket: <4x4>}, ...]
+basket_pose_base: null
+place_pose_base: null
+basket_boxes: []
+basket_geometry_verified: false
+basket_relation_verified: false
+upright_tolerance_rad: 0.15
+place_approach_m: 0.05
+retreat_m: 0.10
+# Planning uses an articulated EG2 model in an isolated namespace.
+# Real execution is deliberately unavailable until calibrated-model and hardware
+# phase synchronization have been validated; --execute always fails closed.

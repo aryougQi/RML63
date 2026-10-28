@@ -1,0 +1,30 @@
+# Real data only. Nulls deliberately prevent computing an invented real pose.
+camera:
+  confirmed: false
+  model: opencv_pinhole
+  stream: L515_color
+  calibration_source: null
+  resolution_wh: null
+  camera_matrix: null
+  dist_coeffs: null
+basket:
+  confirmed: false
+  measurement_source: null
+  length_m: null
+  width_m: null
+  corner_definition: virtual_intersections_of_straight_outer_rim_edges
+correspondence:
+  confirmed: false
+  # model point i -> detected image point index. Never infer from image TL/TR labels.
+  model_to_image_indices: null
+  basis: null
+input_geometry:
+  confirmed: false
+  status: unknown
+  source_resolution_wh: null
+  input_resolution_wh: null
+  source_to_input_3x3: null
+solver:
+  max_reprojection_rmse_px: 2.0
+  max_point_error_px: 4.0
+  ambiguity_margin_px: 0.5

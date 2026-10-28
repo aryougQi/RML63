@@ -1,0 +1,22 @@
+<launch>
+  <!-- Convenience wrapper around the user's ORIGINAL RealSense ROS node. -->
+  <arg name="serial" default="f1380095"/>
+  <arg name="camera" default="camera"/>
+  <arg name="min_distance_mm" default="250"/>
+  <param name="/$(arg camera)/l500_depth_sensor/min_distance" value="$(arg min_distance_mm)" type="double"/>
+  <!-- Continuously map hardware clocks to the host clock via librealsense. -->
+  <param name="/$(arg camera)/l500_depth_sensor/global_time_enabled" value="true" type="bool"/>
+  <param name="/$(arg camera)/rgb_camera/global_time_enabled" value="true" type="bool"/>
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="serial_no" value="$(arg serial)"/>
+    <arg name="camera" value="$(arg camera)"/>
+    <arg name="device_type" value="l515"/>
+    <arg name="depth_width" value="320"/><arg name="depth_height" value="240"/><arg name="depth_fps" value="30"/>
+    <arg name="color_width" value="640"/><arg name="color_height" value="480"/><arg name="color_fps" value="30"/>
+    <arg name="enable_confidence" value="false"/>
+    <arg name="enable_color" value="true"/>
+    <arg name="enable_pointcloud" value="false"/>
+    <arg name="align_depth" value="false"/>
+    <arg name="filters" value=""/>
+  </include>
+</launch>

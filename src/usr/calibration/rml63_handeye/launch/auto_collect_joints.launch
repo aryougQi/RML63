@@ -1,0 +1,17 @@
+<launch>
+  <arg name="execute" default="false"/>
+  <arg name="tag_size_verified" default="false"/>
+  <arg name="rotation_delta_degrees" default="20"/>
+  <arg name="translation_delta_meters" default="0.04"/>
+  <arg name="initial_calibration" default="$(env HOME)/.ros/easy_handeye/rml63_l515_manual_eye_on_hand.yaml"/>
+  <arg name="optimize_after_collection" default="true"/>
+  <node pkg="rml63_handeye" type="auto_collect_joints.py" name="rml63_auto_collect_joints" output="screen">
+    <param name="execute" value="$(arg execute)"/>
+    <param name="tag_size_verified" value="$(arg tag_size_verified)"/>
+    <param name="rotation_delta_degrees" value="$(arg rotation_delta_degrees)"/>
+    <param name="translation_delta_meters" value="$(arg translation_delta_meters)"/>
+    <param name="initial_calibration" value="$(arg initial_calibration)"/>
+    <param name="optimize_after_collection" value="$(arg optimize_after_collection)"/>
+    <param name="output_dir" value="$(env HOME)/.ros/rml63_joint_calibration_runs"/>
+  </node>
+</launch>

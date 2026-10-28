@@ -1,0 +1,73 @@
+Panels:
+- Class: rviz/Displays
+  Name: Displays
+- Class: rviz/Views
+  Name: Views
+Visualization Manager:
+  Class: ''
+  Enabled: true
+  Global Options:
+    Fixed Frame: base_link
+    Background Color: 48; 48; 48
+  Displays:
+  - Class: rviz/Grid
+    Name: Grid
+    Enabled: true
+    Cell Size: 0.1
+  - Class: rviz/RobotModel
+    Name: RobotModel
+    Enabled: true
+    Robot Description: robot_description
+    Visual Enabled: true
+    Collision Enabled: false
+  - Class: rviz/TF
+    Name: TF
+    Enabled: false
+  Tools:
+  - Class: rviz/MoveCamera
+  - Class: rviz/Interact
+    Hide Inactive Objects: true
+  - Class: rviz/Select
+  - Class: rviz/FocusCamera
+  Value: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Name: Current View
+      Target Frame: link6
+      Distance: 0.45
+      Pitch: 0.35
+      Yaw: 0.8
+      Near Clip Distance: 0.005
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0.075
+    Saved:
+    - Class: rviz/Orbit
+      Name: Gripper Closeup
+      Target Frame: link6
+      Distance: 0.45
+      Pitch: 0.35
+      Yaw: 0.8
+      Near Clip Distance: 0.005
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0.075
+    - Class: rviz/Orbit
+      Name: Along Flange Axis
+      Target Frame: link6
+      Distance: 0.4
+      Pitch: 1.57069632679
+      Yaw: 0
+      Near Clip Distance: 0.005
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0.075
+Window Geometry:
+  Width: 1200
+  Height: 850
+  Hide Left Dock: false
+  Hide Right Dock: false

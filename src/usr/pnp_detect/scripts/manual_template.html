@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><title>人工四角标注（MANUAL）</title>
+<p>人工标注：依次点击真实上沿四个角，保存后自动按图像规则排序。点击顺序不代表物理方向。可右键撤销。</p>
+<button onclick="points=[];draw()">清空</button><button onclick="save()">导出 manual_points.json</button><pre id="coords"></pre>
+<canvas id="view" style="max-width:100%;height:auto;border:1px solid #888"></canvas>
+<script>
+const canvas=document.getElementById('view'),ctx=canvas.getContext('2d'),im=new Image();let points=[];
+canvas.width=__WIDTH__;canvas.height=__HEIGHT__;
+im.onload=draw;im.src='data:image/png;base64,__IMAGE__';
+function draw(){ctx.drawImage(im,0,0);ctx.lineWidth=3;ctx.strokeStyle='red';ctx.fillStyle='red';ctx.font='20px sans-serif';points.forEach(([x,y],i)=>{ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.stroke();ctx.fillText(String(i),x+8,y-8)});document.getElementById('coords').textContent=JSON.stringify(points)}
+canvas.onclick=e=>{if(points.length===4)return;const r=canvas.getBoundingClientRect();points.push([(e.clientX-r.left)*canvas.width/r.width,(e.clientY-r.top)*canvas.height/r.height]);draw()};
+canvas.oncontextmenu=e=>{e.preventDefault();points.pop();draw()};
+function save(){if(points.length!==4){alert('需要四点');return}const data={source:'manual',image_resolution_wh:[canvas.width,canvas.height],corners:points};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='manual_points.json';a.click();URL.revokeObjectURL(a.href)}
+</script>

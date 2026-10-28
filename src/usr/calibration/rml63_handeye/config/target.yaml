@@ -1,0 +1,5 @@
+# User reported 151 mm after printing. Must refer to BLACK outer square, excluding white margin.
+tag_family: tag36h11
+tag_id: 0
+tag_size_m: 0.151
+# Active launch defaults are in launch/detect.launch and launch/calibrate.launch.

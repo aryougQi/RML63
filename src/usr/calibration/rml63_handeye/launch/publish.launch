@@ -1,0 +1,12 @@
+<launch>
+  <arg name="namespace_prefix" default="rml63_l515"/>
+  <arg name="use_joint_offsets" default="true"/>
+  <arg name="calibration_file" default="$(find rml63_handeye)/config/active_joint_calibration.yaml"/>
+  <include if="$(arg use_joint_offsets)" file="$(find rml63_handeye)/launch/calibrated_camera.launch">
+    <arg name="calibration_file" value="$(arg calibration_file)"/>
+  </include>
+  <!-- Convert the optical-frame result numerically; renaming the frame alone is incorrect. -->
+  <node unless="$(arg use_joint_offsets)" name="rml63_handeye_tf" pkg="rml63_handeye" type="publish_calibration.py" output="screen">
+    <param name="calibration_namespace" value="/$(arg namespace_prefix)_eye_on_hand"/>
+  </node>
+</launch>

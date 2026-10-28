@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.5)
+project(rml63_tools_description)
+find_package(catkin REQUIRED)
+catkin_package()
+catkin_install_python(PROGRAMS scripts/align_mount_gui.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(DIRECTORY config launch meshes urdf upstream DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(FILES README.md DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

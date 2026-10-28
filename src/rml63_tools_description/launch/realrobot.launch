@@ -1,0 +1,33 @@
+<launch>
+  <arg name="Arm_IP" default="192.168.1.18"/>
+  <arg name="Udp_IP" default="192.168.1.10"/>
+  <arg name="is_4th_Gen" default="false"/>
+  <arg name="start_driver" default="true"/>
+  <arg name="RM63_type" default="RM63II"/>
+  <arg name="link6_type" default="Link6"/>
+  <arg name="plate_xyz" default="0 0 0"/>
+  <arg name="plate_rpy" default="0 0 0"/>
+  <arg name="mount_xyz" default="0 0 0.006909"/>
+  <arg name="mount_rpy" default="0 0 -1.0471975511965976"/>
+  <arg name="gripper_angle" default="0"/>
+  <arg name="allow_execution" default="false"/>
+  <arg name="use_rviz" default="true"/>
+  <!-- Only rm_driver publishes measured arm joint states. No virtual state publisher. -->
+  <include if="$(arg start_driver)" file="$(find rm_driver)/launch/rm_63_driver.launch">
+    <arg name="Arm_IP" value="$(arg Arm_IP)"/>
+    <arg name="Udp_IP" value="$(arg Udp_IP)"/>
+    <arg name="is_4th_Gen" value="$(arg is_4th_Gen)"/>
+  </include>
+  <include file="$(find rml63_tools_description)/launch/moveit.launch">
+    <arg name="RM63_type" value="$(arg RM63_type)"/>
+    <arg name="link6_type" value="$(arg link6_type)"/>
+    <arg name="plate_xyz" value="$(arg plate_xyz)"/>
+    <arg name="plate_rpy" value="$(arg plate_rpy)"/>
+    <arg name="mount_xyz" value="$(arg mount_xyz)"/>
+    <arg name="mount_rpy" value="$(arg mount_rpy)"/>
+    <arg name="gripper_angle" value="$(arg gripper_angle)"/>
+    <arg name="allow_execution" value="$(arg allow_execution)"/>
+    <arg name="use_rviz" value="$(arg use_rviz)"/>
+  </include>
+  <include if="$(arg allow_execution)" file="$(find rm_control)/launch/rm_63_control.launch"/>
+</launch>

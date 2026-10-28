@@ -1,0 +1,27 @@
+<launch>
+  <!-- Black square edge, in metres, excluding the white margin. Measure after printing. -->
+  <arg name="tag_size" default="0.151"/>
+  <arg name="tag_id" default="0"/>
+  <arg name="tag_frame" default="rml63_apriltag_0"/>
+  <arg name="image_topic" default="/camera/color/image_raw"/>
+  <arg name="camera_info_topic" default="/camera/color/camera_info"/>
+  <arg name="show_debug" default="true"/>
+  <arg name="sync_camera_time" default="true"/>
+  <arg name="camera_namespace" default="/camera"/>
+  <group ns="rml63_apriltag">
+    <node if="$(arg sync_camera_time)" name="sync_camera_time" pkg="rml63_handeye" type="sync_camera_time.py" output="screen" required="true">
+      <param name="camera_namespace" value="$(arg camera_namespace)"/>
+    </node>
+    <node name="rectify_color" pkg="rml63_handeye" type="rectify_color.py" output="screen">
+      <remap from="image_raw" to="$(arg image_topic)"/>
+      <remap from="camera_info_raw" to="$(arg camera_info_topic)"/>
+    </node>
+    <node name="detector" pkg="apriltag_ros" type="apriltag_ros_continuous_node" output="screen">
+      <remap from="image_rect" to="image_rect_color"/>
+      <remap from="camera_info" to="camera_info_rect"/>
+      <rosparam command="load" file="$(find rml63_handeye)/config/apriltag.yaml"/>
+      <rosparam param="standalone_tags" subst_value="true">[{id: $(arg tag_id), size: $(arg tag_size), name: '$(arg tag_frame)'}]</rosparam>
+    </node>
+    <node if="$(arg show_debug)" name="image_debug" pkg="rml63_handeye" type="image_debug_view.py" output="screen"/>
+  </group>
+</launch>

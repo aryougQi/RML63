@@ -1,0 +1,73 @@
+base_frame: base_link
+flange_frame: link6
+planning_group: arm
+camera_serial: f1380095
+calibration_file: /home/pc/realman_RML63/src/usr/calibration/rml63_handeye/config/active_joint_calibration.yaml
+mount_file: /home/pc/realman_RML63/src/rml63_tools_description/config/measured_mount.yaml
+visual_config: /home/pc/realman_RML63/src/usr/depth_handle_detect/configs/real_handle.json
+robot_ip: 192.168.1.18
+robot_port: 8080
+pregrasp_distance_m: 0.10
+# Try complete paths in this order; tool tips tilt toward the arm base.
+inward_grasp_tilt_candidates_deg: [0, 5, 10, 15]
+prefer_inward_grasp: true
+# Diagonal/side approaches are fallbacks after inward and vertical attempts.
+grasp_approach_azimuth_candidates_deg: [0, -45, 45, -90, 90]
+grasp_pad_raise_candidates_m: [0, 0.003, 0.006]
+lift_distance_m: 0.01
+open_width_m: 0.045
+contact_width_m: 0.016
+velocity_scaling: 0.05
+acceleration_scaling: 0.05
+max_joint_travel_deg: 90
+max_joint_jump_deg: 5
+max_target_distance_m: 0.45
+joint_feedback_max_age_sec: 0.30
+position_tolerance_m: 0.004
+orientation_tolerance_deg: 2.0
+scene_margin_m: 0.004
+camera_radius_m: 0.045
+# Fine occupancy grid avoids coarse voxel boxes extending back into the arm
+# after native robot points have been filtered; scene_margin_m stays unchanged.
+scene_voxel_m: 0.005
+# Preserve native obstacle positions near contact with 4 mm margin spheres.
+scene_grasp_detail_radius_m: 0.06
+max_capture_motion_deg: 0.10
+max_capture_age_sec: 45
+max_execution_sec: 180
+gripper_speed: 100
+gripper_force: 200
+gripper_timeout_sec: 12
+
+# Standard realsense2_camera 2.3.2 native optical depth (16UC1 millimetres)
+ros_camera_namespace: /camera
+ros_capture_timeout_sec: 15
+ros_frame_max_age_sec: 0.5
+# Require actual SDK global_time domain and independently fresh host arrival.
+ros_arrival_max_age_sec: 0.5
+ros_depth_optical_frame: camera_depth_optical_frame
+
+# Integrated handle-only candidate ranking and relative side placement.
+# No basket pose or absolute place target is required.
+place_aside: true
+# Negative Y passed a complete plan with the observed scene on 2026-10-27.
+side_place_offset_base_m: [0.0, -0.05, 0.0]
+side_place_lift_m: 0.03
+side_place_retreat_m: 0.05
+# Partial depth observes obstacles, but does not certify an entire carried basket.
+# Keep execution closed until the actual carried-object/destination space is checked.
+side_place_scene_verified: false
+
+# Bound the multi-position search; preserve all collision/trajectory checks.
+handle_planning_top_k: 3
+planning_mode: first_feasible
+planning_total_timeout_sec: 20.0
+planning_candidate_timeout_sec: 6.0
+planning_max_approach_attempts: 4
+
+# Fine coverage is mandatory. Coarse screening is experimental and optional.
+coarse_check_enabled: false
+cartesian_coarse_step_m: 0.009
+cartesian_fine_step_m: 0.003
+cartesian_local_retry_depth: 2
+cad_clearance_broadphase: true

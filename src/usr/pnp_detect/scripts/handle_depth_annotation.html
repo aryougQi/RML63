@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>人工把手区域标注</title>
+<style>body{font:16px sans-serif;margin:24px;background:#eee}canvas{max-width:100%;border:1px solid #555}button,select{font:inherit;margin:8px}p{max-width:900px}</style>
+<h2>人工区域真值：不是自动把手检测</h2>
+<p>在可夹持的把手表面内部逐点点击多边形，避开边缘和孔洞。可另标背景/篮底区域用于诊断。
+像素坐标绑定原始彩色图和本次采集；标注并不证明深度来自把手。不要在画面没有真实把手时编造标注。</p>
+<select id="role"><option value="handle_polygon">把手（红）</option><option value="background_polygon">背景/篮底（蓝，可选）</option></select>
+<button onclick="regions[role.value].pop();draw()">撤销一点</button><button onclick="regions[role.value]=[];draw()">清空当前区域</button>
+<p><label><input type="checkbox" id="fixed">我确认整个序列中相机、篮子、把手均保持静止；允许此区域用于全序列时间波动统计</label></p>
+<button onclick="save()">导出人工标注 JSON（保存到项目 reports）</button><p id="status"></p><canvas id="canvas"></canvas>
+<script>
+const metadata=__METADATA__, regions={handle_polygon:[],background_polygon:[]};
+const canvas=document.getElementById('canvas'),ctx=canvas.getContext('2d'),role=document.getElementById('role');
+const image=new Image(); image.onload=()=>{canvas.width=image.width;canvas.height=image.height;draw()};image.src='data:image/png;base64,__IMAGE__';
+canvas.onclick=e=>{const r=canvas.getBoundingClientRect();regions[role.value].push([Math.max(0,Math.min(canvas.width-1,Math.round((e.clientX-r.left)*canvas.width/r.width))),Math.max(0,Math.min(canvas.height-1,Math.round((e.clientY-r.top)*canvas.height/r.height)))]);draw()};
+function draw(){ctx.drawImage(image,0,0);for(const [key,points]of Object.entries(regions)){ctx.strokeStyle=key==='handle_polygon'?'red':'#0088ff';ctx.fillStyle=ctx.strokeStyle;ctx.lineWidth=2;ctx.beginPath();points.forEach(([x,y],i)=>{if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y)});if(points.length>2)ctx.closePath();ctx.stroke();for(const[x,y]of points){ctx.beginPath();ctx.arc(x,y,3,0,7);ctx.fill()}}document.getElementById('status').textContent='人工把手顶点 '+regions.handle_polygon.length+'；背景顶点 '+regions.background_polygon.length}
+function save(){if(regions.handle_polygon.length<3){alert('至少标注三个把手区域顶点');return}if(regions.background_polygon.length>0&&regions.background_polygon.length<3){alert('背景至少三点或留空');return}const data={...metadata,...regions,scene_static_confirmed:document.getElementById('fixed').checked};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='manual_regions.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+</script></html>

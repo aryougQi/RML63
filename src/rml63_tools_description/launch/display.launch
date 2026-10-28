@@ -1,0 +1,19 @@
+<launch>
+  <arg name="RM63_type" default="RM63II"/>
+  <arg name="link6_type" default="Link6"/>
+  <arg name="plate_xyz" default="0 0 0"/>
+  <arg name="plate_rpy" default="0 0 0"/>
+  <arg name="mount_xyz" default="0 0 0.006909"/>
+  <arg name="mount_rpy" default="0 0 -1.0471975511965976"/>
+  <arg name="gripper_angle" default="0"/>
+  <arg name="fixed_gripper" default="false"/>
+  <!-- A separate master prevents the GUI's fictitious joint states reaching a running real robot stack. -->
+  <arg name="use_gui" default="true"/>
+  <param name="robot_description" command="$(find xacro)/xacro '$(find rml63_tools_description)/urdf/rml63_with_gripper.urdf.xacro' RM63_type:=$(arg RM63_type) link6_type:=$(arg link6_type) 'plate_xyz:=$(arg plate_xyz)' 'plate_rpy:=$(arg plate_rpy)' 'mount_xyz:=$(arg mount_xyz)' 'mount_rpy:=$(arg mount_rpy)' fixed_gripper:=$(arg fixed_gripper) gripper_angle:=$(arg gripper_angle)"/>
+  <node if="$(arg use_gui)" name="model_joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
+    <!-- GUI initial positions only; these do not change hardware encoder zero offsets. -->
+    <rosparam command="load" file="$(find rml63_tools_description)/config/preview_joint_positions.yaml"/>
+  </node>
+  <node name="model_robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node name="model_rviz" pkg="rviz" type="rviz" args="-d $(find rml63_tools_description)/config/display.rviz"/>
+</launch>

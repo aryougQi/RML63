@@ -1,0 +1,17 @@
+{
+  "repository": "https://github.com/alessandrozamberletti/docdetect",
+  "commit": "dc29391bcc1494d662e3fe7cabd630b708ab2a70",
+  "files": {
+    "LICENSE": "2e023a5939111558e3170c93f9723b7ced3a77abb202838c67b00c58cc3e7ae7",
+    "README.md": "3ead0227a55377894d065af2d97f1ed9fcf15808830bef1c11eadea01fba80fc",
+    "requirements.txt": "9564939b1a86510b7233c8fc658fd24c70ca8f674e12d05fa93bf71a49c7f8a2",
+    "setup.py": "883c2116bf59d74c3a472fde4ed61519f60a5dc42a3fadb8cec2a5e4f9125a10",
+    "docdetect/__init__.py": "693ccfff9e7904881a1a23404b109a89f47951878bc8f723efa21c826ea5b591",
+    "docdetect/processor.py": "9aca7e55172da8e56a30a66655951d1caa46273b1208110b0ff02fccd386c6b4",
+    "docdetect/canny_edges.py": "c8013a638721a0b724a0854d98f98fbadfccd91142168b20a4d1cc1cd4b3106b",
+    "docdetect/hough_lines.py": "4117e4962d61a4603c7afffeb650475726e5448cff9a149fc4ff6d6b5d22595f",
+    "docdetect/intersections.py": "0659b1568cd7a398c915a0c06f8791ba3b0b40ecf62017e780b7c66f861bfe6b",
+    "docdetect/quadrilaterals.py": "55a35a59ceb09c520a80797bd4b1731f63b1b9a542b458dfd9ae7575eb47c0a1",
+    "docdetect/line_utils.py": "7b6b6b35d807a8c5f4e222baa615fd6b19bf698a38bb6ce12669f35194ce2751"
+  }
+}
