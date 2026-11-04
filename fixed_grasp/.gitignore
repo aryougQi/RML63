@@ -5,3 +5,11 @@ outputs/
 __pycache__/
 *.pyc
 src/CMakeLists.txt
+
+# Local simulation and deployment stay on this computer.
+simulation/
+DEPLOYMENT.md
+compose.yaml
+deploy.sh
+.dockerignore
+.catkin_workspace

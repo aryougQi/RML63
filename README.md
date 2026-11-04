@@ -37,6 +37,6 @@ Python 视觉依赖见各模块的 `requirements.txt`。具体流程见各模块
 
 ## 2026-11-03 fixed_grasp 独立运行包
 
-新增源码、两套示教点位和复用 Docker 环境的 Gazebo / MoveIt 仿真见
-[fixed_grasp 部署说明](fixed_grasp/DEPLOYMENT.md)。仿真按选定抓取 TCP 放置长方体，
-默认开启 Gazebo、RViz，使用独立 ROS 端口 11321。旧版核心源码保留。
+[fixed_grasp](fixed_grasp/README.md) 包含固定抓取核心源码、必需的驱动和模型、
+两套示教点位及构建与运行脚本。此目录不包含本机仿真和 Docker 部署文件。
+旧版核心源码保留在根目录的 `src/` 中。
