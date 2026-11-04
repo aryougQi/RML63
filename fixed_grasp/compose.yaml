@@ -1,0 +1,21 @@
+services:
+  sim:
+    build:
+      context: .
+      dockerfile: simulation/Dockerfile
+    image: rml63/fixed-grasp:20261103
+    container_name: rml63-fixed-sim
+    network_mode: host
+    ipc: host
+    shm_size: 1gb
+    environment:
+      DISPLAY: "${DISPLAY:-:0}"
+      XAUTHORITY: /tmp/host.xauth
+      QT_X11_NO_MITSHM: "1"
+      LIBGL_ALWAYS_SOFTWARE: "1"
+      ROS_MASTER_URI: http://127.0.0.1:11321
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${XAUTHORITY:-/dev/null}:/tmp/host.xauth:ro
+      - ./outputs:/workspace/outputs
+    command: ["roslaunch", "rml63_fixed_sim", "scene.launch", "gui:=${SIM_GUI:-true}", "rviz:=${SIM_RVIZ:-true}", "profile:=${GRASP_PROFILE:-1}"]

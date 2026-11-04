@@ -1,0 +1,21 @@
+<launch>
+  <arg name="config" default="$(find fixed_grasp)/config/fixed.yaml"/>
+  <arg name="waypoints" default="$(find fixed_grasp)/config/waypoints.yaml"/>
+  <arg name="grasp2_waypoints" default="$(find fixed_grasp)/config/waypoints_2.yaml"/>
+  <arg name="allow_execution" default="false"/>
+  <arg name="m20_enabled" default="false"/>
+  <arg name="m20_test_mode" default="false"/>
+  <arg name="m20_database" default="$(env HOME)/.ros/fixed_grasp/m20_transactions.sqlite3"/>
+  <arg name="m20_test_database" default="$(env HOME)/.ros/fixed_grasp/m20_test_transactions.sqlite3"/>
+  <!-- Does not start a robot driver or change MoveIt's execution permission. -->
+  <node pkg="fixed_grasp" type="server.py" name="fixed_grasp" output="screen" required="true">
+    <param name="config" value="$(arg config)"/>
+    <param name="waypoints" value="$(arg waypoints)"/>
+    <param name="grasp2_waypoints" value="$(arg grasp2_waypoints)"/>
+    <param name="allow_execution" value="$(arg allow_execution)"/>
+    <param name="m20_enabled" value="$(arg m20_enabled)"/>
+    <param name="m20_test_mode" value="$(arg m20_test_mode)"/>
+    <param name="m20_database" value="$(arg m20_database)"/>
+    <param name="m20_test_database" value="$(arg m20_test_database)"/>
+  </node>
+</launch>

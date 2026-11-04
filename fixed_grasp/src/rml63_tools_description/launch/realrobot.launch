@@ -1,0 +1,19 @@
+<launch>
+  <arg name="Arm_IP" default="192.168.1.18"/>
+  <arg name="Udp_IP" default="192.168.1.10"/>
+  <arg name="is_4th_Gen" default="false"/>
+  <arg name="start_driver" default="true"/>
+  <arg name="allow_execution" default="false"/>
+  <arg name="use_rviz" default="true"/>
+  <!-- Only rm_driver publishes measured arm joint states. No virtual state publisher. -->
+  <include if="$(arg start_driver)" file="$(find rm_driver)/launch/rm_63_driver.launch">
+    <arg name="Arm_IP" value="$(arg Arm_IP)"/>
+    <arg name="Udp_IP" value="$(arg Udp_IP)"/>
+    <arg name="is_4th_Gen" value="$(arg is_4th_Gen)"/>
+  </include>
+  <include file="$(find rml63_tools_description)/launch/moveit.launch">
+    <arg name="allow_execution" value="$(arg allow_execution)"/>
+    <arg name="use_rviz" value="$(arg use_rviz)"/>
+  </include>
+  <include if="$(arg allow_execution)" file="$(find rm_control)/launch/rm_63_control.launch"/>
+</launch>

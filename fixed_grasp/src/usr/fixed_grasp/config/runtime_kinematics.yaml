@@ -1,0 +1,43 @@
+# Active paired calibration. Angles: degrees; translations: metres.
+# Restart publish.launch after changes. See JOINT_CALIBRATION.md.
+schema: 1
+base_frame: base_link
+nominal_effector_frame: link6
+calibrated_effector_frame: rml63_link6_calibrated
+camera_link_frame: camera_link
+camera_optical_frame: camera_color_optical_frame
+joint_names:
+- joint1
+- joint2
+- joint3
+- joint4
+- joint5
+- joint6
+robot_chain_sha256: 20383cdeff166cb7de4594a13b18dee82057bf50ef5a478b7132c270fbd8a2c9
+joint_offsets_deg:
+  joint1: 0.0
+  joint2: -0.01033275867868868
+  joint3: 0.3242114932432209
+  joint4: -0.13976253434883704
+  joint5: 1.088170582533535
+  joint6: 0.0
+effector_to_camera_optical:
+  translation_m:
+  - 0.08113514276009819
+  - 0.058037576647476885
+  - 0.0498249690806707
+  quaternion_xyzw:
+  - -0.10709526553086358
+  - -0.2119539812553087
+  - 0.8584552522188876
+  - 0.4545994873168072
+provenance:
+  training_report: /home/pc/.ros/rml63_joint_calibration_runs/20261022_193925/joint_optimization_report.yaml
+  training_sha256: 432813a8ed53d33c1bd41faf4c49393e532aaab4b9ab3feaac5eefe0d3cbb328
+  validation_dataset: /home/pc/.ros/rml63_joint_calibration_runs/20261022_194846_839381/dataset.yaml
+  validation_sha256: 6c51819e8796d4bb9d3f0a6ab93aed2d9cb421e53545c30ea5e1c351a4198c02
+  independent_validation:
+    position_rms_mm: 1.6711007636841866
+    position_max_mm: 2.4077709131538687
+    rotation_rms_deg: 1.4219690147413928
+  scope: camera localization TF only; controller and MoveIt unchanged

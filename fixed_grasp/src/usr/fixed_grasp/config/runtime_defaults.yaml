@@ -1,0 +1,40 @@
+base_frame: base_link
+flange_frame: link6
+planning_group: arm
+robot_ip: 192.168.1.18
+robot_port: 8080
+pregrasp_distance_m: 0.1
+lift_distance_m: 0.01
+open_width_m: 0.045
+contact_width_m: 0.016
+velocity_scaling: 0.05
+acceleration_scaling: 0.05
+max_joint_travel_deg: 90
+max_joint_jump_deg: 5
+max_target_distance_m: 0.45
+joint_feedback_max_age_sec: 0.3
+position_tolerance_m: 0.004
+orientation_tolerance_deg: 2.0
+scene_margin_m: 0.004
+camera_radius_m: 0.045
+scene_voxel_m: 0.005
+scene_grasp_detail_radius_m: 0.06
+max_capture_motion_deg: 0.1
+max_execution_sec: 180
+gripper_speed: 100
+gripper_force: 200
+gripper_timeout_sec: 12
+planning_total_timeout_sec: 20.0
+cartesian_fine_step_m: 0.003
+cartesian_coarse_step_m: 0.009
+cartesian_local_retry_depth: 2
+coarse_check_enabled: false
+cad_clearance_broadphase: true
+environment_verification_max_age_sec: 300.0
+environment_geometry:
+  mode: observed_depth
+  frame_id: base_link
+  source: partial_depth_only
+  verified: false
+  boxes: []
+environment_verification_enabled: true

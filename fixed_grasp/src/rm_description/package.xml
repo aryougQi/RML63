@@ -1,0 +1,7 @@
+<package format="2">
+  <name>rm_description</name>
+  <version>1.0.0</version>
+  <author>TODO</author>
+  <maintainer email="TODO@email.com" />
+  <license>BSD</license>
+  <description>RML63 runtime geometry only.</description><buildtool_depend>catkin</buildtool_depend></package>

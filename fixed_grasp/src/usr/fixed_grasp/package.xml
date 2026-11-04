@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>fixed_grasp</name><version>0.1.0</version>
+  <description>Independent taught fixed grasp with calibrated planning and explicit execution gates.</description>
+  <maintainer email="local@example.invalid">Local operator</maintainer><license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>
+  <depend>actionlib_msgs</depend><depend>std_msgs</depend>
+  <exec_depend>message_runtime</exec_depend><exec_depend>actionlib</exec_depend>
+  <exec_depend>rospy</exec_depend><exec_depend>rospkg</exec_depend>
+  <exec_depend>roslaunch</exec_depend><exec_depend>rosgraph</exec_depend>
+  <exec_depend>python3-pykdl</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  
+  <exec_depend>rml63_tools_description</exec_depend><exec_depend>moveit_commander</exec_depend>
+  <exec_depend>moveit_msgs</exec_depend><exec_depend>shape_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend><exec_depend>python3-yaml</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <test_depend>python3-nose</test_depend>
+<exec_depend>rm_msgs</exec_depend>
+<exec_depend>rm_driver</exec_depend>
+<exec_depend>rm_control</exec_depend>
+<exec_depend>rml_63_moveit_config</exec_depend>
+<exec_depend>control_msgs</exec_depend>
+<exec_depend>trajectory_msgs</exec_depend>
+<exec_depend>visualization_msgs</exec_depend>
+<exec_depend>tf</exec_depend>
+<exec_depend>tf2_ros</exec_depend>
+<exec_depend>python3-scipy</exec_depend>
+<exec_depend>python3-opencv</exec_depend>
+</package>

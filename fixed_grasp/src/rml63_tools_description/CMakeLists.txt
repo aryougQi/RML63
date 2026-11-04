@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.5)
+project(rml63_tools_description)
+find_package(catkin REQUIRED)
+catkin_package()
+install(DIRECTORY config launch meshes urdf upstream DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

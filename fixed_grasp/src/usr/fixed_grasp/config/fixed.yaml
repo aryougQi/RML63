@@ -1,0 +1,51 @@
+# Existing safety thresholds come directly from depth_handle_grasp/config/grasp.yaml,
+# except for the fixed-task motion scaling configured below.
+# This file only supplies independent fixed-task settings.
+# Use MoveIt's existing robot/scene only; fixed_grasp adds/removes no objects.
+# Joint limits and collision checks against that existing model remain active.
+# Fixed tasks have no additional 90-degree total joint travel restriction.
+scene_mode: existing
+# Compiled calibrated KDL first; original numerical IK remains the fallback.
+fast_ik_enabled: true
+planning_attempts: 3
+joint_plan_timeout_sec: 8.0
+# Short transitions; continue as soon as actual TCP/force feedback is verified.
+trajectory_start_delay_sec: 0.05
+# Maximum arrival-feedback wait, not a fixed pause.
+trajectory_settle_timeout_sec: 0.6
+trajectory_settle_poll_sec: 0.02
+motion_result_poll_sec: 0.05
+gripper_poll_interval_sec: 0.05
+# Motion scaling for fixed_grasp only.
+velocity_scaling: 0.9
+acceleration_scaling: 0.6
+# Continuous force-controlled grip; command units 1..1000, not newtons.
+gripper_force: 500
+# Minimum absolute current_force feedback in controller units (not newtons).
+# Require three consecutive contact samples; opening is not a holding criterion.
+gripper_min_hold_force: 50
+# Approach and release opening: 50 mm. Contact width/calibration is unchanged.
+open_width_m: 0.050
+waypoints_file: ''
+basket:
+  verified: false
+  source: ''
+  # Compound boxes in the Grasp TCP frame, covering the complete carried basket.
+  # Each: {size_m: [x,y,z], pose_tcp: 4x4 homogeneous matrix}
+  boxes: []
+support_service: ''
+support_source: ''
+# Operator verified this object is stably supported at the taught Place.
+# Re-teaching changes the digest and invalidates automatic release approval.
+release_mode: taught_place
+taught_place_verification:
+  verified: true
+  source: 'Operator confirmed in this session: current object is stably supported and can be released at taught Place.'
+  waypoints_sha256: 1fe8d0d8955859fd053dc104b489214fb267241006dce9464568bf115bb91d60
+# Independent measured obstacles including tables/supports; never auto-certified.
+environment_geometry:
+  mode: measured_boxes
+  frame_id: base_link
+  verified: false
+  source: ''
+  boxes: []

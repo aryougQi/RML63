@@ -1,0 +1,6 @@
+<package format="2">
+  <name>rml63_tools_description</name>
+  <version>0.1.0</version>
+  <maintainer email="pc@localhost.local">pc</maintainer>
+  <license>Apache-2.0</license>
+  <description>Frozen RML63 and EG2-4C2 runtime model; no alignment GUI.</description><buildtool_depend>catkin</buildtool_depend><exec_depend>rm_description</exec_depend><exec_depend>rm_driver</exec_depend><exec_depend>rm_control</exec_depend><exec_depend>rml_63_moveit_config</exec_depend><exec_depend>xacro</exec_depend><exec_depend>robot_state_publisher</exec_depend><exec_depend>moveit_ros_move_group</exec_depend><exec_depend>rviz</exec_depend><exec_depend>python3-yaml</exec_depend></package>

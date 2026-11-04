@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rml_63_description">
+  <xacro:arg name="link6_type" default="Link6"/>
+  <xacro:arg name="RM63_type" default="RM63II"/>
+  <!-- Official attachment method: link6 -> adapter plate -> gripper base. -->
+  <xacro:arg name="plate_xyz" default="0 0 0"/>
+  <xacro:arg name="plate_rpy" default="0 0 0"/>
+  <!-- Gripper mount relative to fixed_plate_link, metres/radians; verify on assembly. -->
+  <xacro:arg name="mount_xyz" default="0 0 0.006909"/>
+  <xacro:arg name="mount_rpy" default="0 0 -1.0471975511965976"/>
+  <!-- Official linkage angle: 0 = exported pose; range 0..0.82 rad. No live feedback. -->
+  <xacro:arg name="gripper_angle" default="0"/>
+  <xacro:arg name="fixed_gripper" default="false"/>
+  <xacro:arg name="alignment_preview" default="false"/>
+  <xacro:include filename="$(find rm_description)/urdf/RML63_6FB/rml_63_6fb_description.urdf.xacro"/>
+  <!-- Frame only until actual adapter geometry and assembly offsets are verified. -->
+  <link name="fixed_plate_link"/>
+  <joint name="fixed_plate_joint" type="fixed">
+    <parent link="link6"/>
+    <child link="fixed_plate_link"/>
+    <origin xyz="$(arg plate_xyz)" rpy="$(arg plate_rpy)"/>
+  </joint>
+  <xacro:include filename="$(find rml63_tools_description)/urdf/eg2_4c2.xacro"/>
+  <xacro:if value="$(arg alignment_preview)">
+    <!-- Virtual adjustment joint only; never present in the real MoveIt model. -->
+    <link name="mount_alignment_link"/>
+    <joint name="mount_alignment_joint" type="continuous">
+      <parent link="fixed_plate_link"/>
+      <child link="mount_alignment_link"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+    <xacro:eg2_4c2 parent="mount_alignment_link" xyz="$(arg mount_xyz)" rpy="$(arg mount_rpy)" fixed="true" angle="0"/>
+  </xacro:if>
+  <xacro:unless value="$(arg alignment_preview)">
+    <xacro:eg2_4c2 parent="fixed_plate_link" xyz="$(arg mount_xyz)" rpy="$(arg mount_rpy)" fixed="$(arg fixed_gripper)" angle="$(arg gripper_angle)"/>
+  </xacro:unless>
+</robot>

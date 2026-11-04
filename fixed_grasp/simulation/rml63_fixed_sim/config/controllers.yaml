@@ -1,0 +1,32 @@
+# Gazebo-only trajectory controller.  The upstream rm_gazebo file is kept for
+# the vendor launch files and is not modified here.
+arm:
+  arm_joint_controller:
+    type: position_controllers/JointTrajectoryController
+    joints:
+      - joint1
+      - joint2
+      - joint3
+      - joint4
+      - joint5
+      - joint6
+    # The exported URDF has no reliable actuator-side damping.  These gains
+    # are deliberately modest because gazebo_pid.yaml is the actual position
+    # loop.  Goal tolerances make the action result reflect the numerical
+    # resolution of the fixed-base simulation rather than an omitted default.
+    constraints:
+      goal_time: 2.0
+      stopped_velocity_tolerance: 0.2
+      joint1: {goal: 0.01}
+      joint2: {goal: 0.01}
+      joint3: {goal: 0.01}
+      joint4: {goal: 0.01}
+      joint5: {goal: 0.015}
+      joint6: {goal: 0.015}
+    gains:
+      joint1: {p: 1.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      joint2: {p: 1.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      joint3: {p: 1.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      joint4: {p: 1.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      joint5: {p: 1.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      joint6: {p: 1.0, i: 0.0, d: 0.1, i_clamp: 0.0}

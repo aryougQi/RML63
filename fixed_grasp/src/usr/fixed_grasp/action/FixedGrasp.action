@@ -1,0 +1,15 @@
+uint8 PLAN_ONLY=0
+uint8 EXECUTE=1
+uint8 mode
+bool full_transfer
+---
+bool success
+bool planning_success
+bool execution_success
+bool grasp_verified
+string stage
+string reason
+---
+string stage
+string detail
+bool holding

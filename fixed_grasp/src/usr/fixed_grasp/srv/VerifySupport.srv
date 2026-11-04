@@ -1,0 +1,7 @@
+string task_id
+time requested_at
+---
+bool supported
+time measured_at
+string source
+string reason

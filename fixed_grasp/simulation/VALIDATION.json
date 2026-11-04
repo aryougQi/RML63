@@ -1,0 +1,81 @@
+{
+  "source_zip_sha256": "7187832192d39aeb5153953d3a9de92980b9facaf8dcb4925520eea32f1b1ce9",
+  "source_manifest": "all entries passed",
+  "offline_package_verification": "passed",
+  "unit_tests": {
+    "count": 192,
+    "status": "passed"
+  },
+  "profiles": [
+    {
+      "profile": 1,
+      "frame": "base_link",
+      "grasp_tcp_base_m": [
+        -0.27081914991168565,
+        -0.03738992695025921,
+        0.09130617524636725
+      ],
+      "cuboid_size_m": [
+        0.12,
+        0.03,
+        0.06
+      ],
+      "cuboid_world_m": [
+        -0.27081914991168565,
+        -0.03738992695025921,
+        0.5913061752463673
+      ],
+      "actual_world_m": [
+        -0.27082103630323084,
+        -0.03739041537551563,
+        0.5913053509731949
+      ],
+      "placement_error_m": 2.115764295849538e-06,
+      "home_action_error_code": 0,
+      "physics_grasp_validated": false,
+      "assumptions": "120 x 30 x 60 mm cuboid centered at grasp TCP; level yaw from TCP Y; support is approximate; frozen gripper, no robot contact physics",
+      "live_check": {
+        "placement_error_m": 2.115764295849538e-06,
+        "calibrated_grasp_fk_error_m": 0.0,
+        "controllers_running": true,
+        "home_feedback_verified": true,
+        "moveit_objects_verified": true
+      }
+    },
+    {
+      "profile": 2,
+      "frame": "base_link",
+      "grasp_tcp_base_m": [
+        -0.27076196207427705,
+        0.03288861205981492,
+        0.08803437521950058
+      ],
+      "cuboid_size_m": [
+        0.12,
+        0.03,
+        0.06
+      ],
+      "cuboid_world_m": [
+        -0.27076196207427705,
+        0.03288861205981492,
+        0.5880343752195005
+      ],
+      "actual_world_m": [
+        -0.2707602755395163,
+        0.03288907660740447,
+        0.5880331367514193
+      ],
+      "placement_error_m": 2.143363513330772e-06,
+      "home_action_error_code": 0,
+      "physics_grasp_validated": false,
+      "assumptions": "120 x 30 x 60 mm cuboid centered at grasp TCP; level yaw from TCP Y; support is approximate; frozen gripper, no robot contact physics",
+      "live_check": {
+        "placement_error_m": 2.143363513330772e-06,
+        "calibrated_grasp_fk_error_m": 0.0,
+        "controllers_running": true,
+        "home_feedback_verified": true,
+        "moveit_objects_verified": true
+      }
+    }
+  ]
+}
